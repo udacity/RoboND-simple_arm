@@ -74,10 +74,10 @@ int main(int argc, char** argv)
     client = n.serviceClient<simple_arm::GoToPosition>("safe_move");
 
     // Subscribe to /simple_arm/joint_states topic to read the arm joints position inside the joint_states_callback function
-    ros::Subscriber sub = n.subscribe("/simple_arm/joint_states", 1000, joint_states_callback);
+    ros::Subscriber sub = n.subscribe("/simple_arm/joint_states", 5, joint_states_callback);
 
     // Subscribe to rgb_camera/image_raw topic to read the image data inside the look_away_callback function
-    ros::Subscriber sub2 = n.subscribe("rgb_camera/image_raw", 1000, look_away_callback);
+    ros::Subscriber sub2 = n.subscribe("rgb_camera/image_raw", 5, look_away_callback);
 
     // Handle ROS communication events
     ros::spin();
