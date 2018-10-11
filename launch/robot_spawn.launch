@@ -18,13 +18,17 @@
   args="-urdf -param robot_description -x 0 -y 0 -z 0 -R 0 -P 0 -Y 0 -model simple_arm"/>
 
   <!-- The arm mover node -->
-  <node name="arm_mover" type="arm_mover" pkg="simple_arm">
+  <node name="arm_mover" type="arm_mover" pkg="simple_arm" output="screen">
     <rosparam>
       min_joint_1_angle: 0
       max_joint_1_angle: 1.57
       min_joint_2_angle: 0
-      max_joint_2_angle: 1.0
+      max_joint_2_angle: 1.57
     </rosparam>
+  </node>
+
+ <!-- The look away node -->
+  <node name="look_away" type="look_away" pkg="simple_arm" output="screen">
   </node>
 
 </launch>
