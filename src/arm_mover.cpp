@@ -81,7 +81,7 @@ int main(int argc, char** argv)
     joint2_pub = n.advertise<std_msgs::Float64>("/simple_arm/joint_2_position_controller/command", 10);
 
     // Define a safe_move service with a handle_safe_move_request callback function
-    ros::ServiceServer service = n.advertiseService("safe_move", handle_safe_move_request);
+    ros::ServiceServer service = n.advertiseService("/arm_mover/safe_move", handle_safe_move_request);
     ROS_INFO("Ready to send joint commands");
 
     // Handle ROS communication events
