@@ -2,7 +2,7 @@
 #include "simple_arm/GoToPosition.h"
 #include <std_msgs/Float64.h>
 
-// Global joint publisher variables
+// Global joint publisher objects
 ros::Publisher joint1_pub, joint2_pub;
 
 // This function checks and clamps the joint angles to a safe zone
