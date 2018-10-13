@@ -15,6 +15,7 @@ find_package(catkin REQUIRED COMPONENTS
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
+add_compile_options(-std=c++11)
 
 
 ## Uncomment this if the package has a setup.py. This macro ensures
@@ -54,10 +55,10 @@ find_package(catkin REQUIRED COMPONENTS
 # )
 
 ### Generate services in the 'srv' folder
-#add_service_files(
-#   FILES
-#   GoToPosition.srv
-#)
+add_service_files(
+   FILES
+   GoToPosition.srv
+)
 
 ## Generate actions in the 'action' folder
 # add_action_files(
@@ -67,10 +68,10 @@ find_package(catkin REQUIRED COMPONENTS
 # )
 
 ### Generate added messages and services with any dependencies listed here
-#generate_messages(
-#   DEPENDENCIES
-#   std_msgs  # Or other packages containing msgs
-#)
+generate_messages(
+   DEPENDENCIES
+   std_msgs  # Or other packages containing msgs
+)
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -199,3 +200,7 @@ include_directories(include ${catkin_INCLUDE_DIRS})
 add_executable(simple_mover src/simple_mover.cpp)
 target_link_libraries(simple_mover ${catkin_LIBRARIES})
 add_dependencies(simple_mover simple_arm_generate_messages_cpp)
+
+add_executable(arm_mover src/arm_mover.cpp)
+target_link_libraries(arm_mover ${catkin_LIBRARIES})
+add_dependencies(arm_mover simple_arm_generate_messages_cpp)
