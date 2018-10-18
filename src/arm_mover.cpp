@@ -12,7 +12,7 @@ std::vector<float> clamp_at_boundaries(float requested_j1, float requested_j2)
     float clamped_j1 = requested_j1;
     float clamped_j2 = requested_j2;
 
-    // Get min and max joint parameters, and assiging them to their respective variables
+    // Get min and max joint parameters, and assign them to their respective variables
     float min_j1, max_j1, min_j2, max_j2;
     // Assign a new node handle since we have no access to the main one
     ros::NodeHandle n2;
