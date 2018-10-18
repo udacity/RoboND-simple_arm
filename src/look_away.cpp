@@ -1,6 +1,5 @@
 #include "ros/ros.h"
 #include "simple_arm/GoToPosition.h"
-#include <cstdlib>
 #include <sensor_msgs/JointState.h>
 #include <sensor_msgs/Image.h>
 
