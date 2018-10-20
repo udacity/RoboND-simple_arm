@@ -48,7 +48,7 @@ void look_away_callback(const sensor_msgs::Image img)
     bool uniform_Image = true;
 
     // Loop through each pixel in the image and check if its equal to the first one
-    for (int i = 0; i < img.height * img.width; i++) {
+    for (int i = 0; i < img.height * img.step; i++) {
         if (img.data[i] - img.data[0] != 0) {
             uniform_Image = false;
             break;
