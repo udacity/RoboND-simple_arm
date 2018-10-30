@@ -4,8 +4,8 @@
 #include <sensor_msgs/Image.h>
 
 // Define global vector of joints last position, moving state of the arm, and the client that can request services
-std::vector<double> joints_LastPosition{ 0, 0 };
-bool moving_State = false;
+std::vector<double> joints_last_position{ 0, 0 };
+bool moving_state = false;
 ros::ServiceClient client;
 
 // This function calls the safe_move service to safely move the arm to the center position
@@ -27,17 +27,17 @@ void move_arm_center()
 void joint_states_callback(const sensor_msgs::JointState js)
 {
     // Get joints current position
-    std::vector<double> joints_CurrentPosition = js.position;
+    std::vector<double> joints_current_position = js.position;
 
     // Define a tolerance threshold to compare double values
     double tolerance = 0.0005;
 
     // Check if the arm is moving by comparing its current joints position to its latest
-    if (fabs(joints_CurrentPosition[0] - joints_LastPosition[0]) < tolerance && fabs(joints_CurrentPosition[1] - joints_LastPosition[1]) < tolerance)
-        moving_State = false;
+    if (fabs(joints_current_position[0] - joints_last_position[0]) < tolerance && fabs(joints_current_position[1] - joints_last_position[1]) < tolerance)
+        moving_state = false;
     else {
-        moving_State = true;
-        joints_LastPosition = joints_CurrentPosition;
+        moving_state = true;
+        joints_last_position = joints_current_position;
     }
 }
 
@@ -45,18 +45,18 @@ void joint_states_callback(const sensor_msgs::JointState js)
 void look_away_callback(const sensor_msgs::Image img)
 {
 
-    bool uniform_Image = true;
+    bool uniform_image = true;
 
     // Loop through each pixel in the image and check if its equal to the first one
     for (int i = 0; i < img.height * img.step; i++) {
         if (img.data[i] - img.data[0] != 0) {
-            uniform_Image = false;
+            uniform_image = false;
             break;
         }
     }
 
     // If the image is uniform and the arm is not moving, move the arm to the center
-    if (uniform_Image == true && moving_State == false)
+    if (uniform_image == true && moving_state == false)
         move_arm_center();
 }
 
