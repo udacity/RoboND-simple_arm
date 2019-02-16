@@ -47,7 +47,7 @@ Open a new terminal and type the following:
 ```sh
 $ cd /home/workspace/catkin_ws/
 $ source devel/setup.bash
-$ rosservice call /arm_mover/safe_move "joint_1: 0.0 joint_2: 0.0"
+$ rosservice call /arm_mover/safe_move 1.0 1.0
 ```
 
 ## How to view image stream from the camera?
