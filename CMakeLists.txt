@@ -193,3 +193,13 @@ catkin_package(
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
+
+## Registering simple_mover.cpp
+include_directories(include ${catkin_INCLUDE_DIRS})
+
+add_executable(simple_mover src/simple_mover.cpp)
+target_link_libraries(simple_mover ${catkin_LIBRARIES})
+add_dependencies(simple_mover simple_arm_generate_messages_cpp)
+
+
+
